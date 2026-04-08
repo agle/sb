@@ -23,7 +23,6 @@
  (description "A longer description")
  (depends 
    ocaml
-   cow
    calendar
    cmarkit
    hilite

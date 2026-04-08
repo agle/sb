@@ -5,4 +5,4 @@
  (flags
   (:standard -w -26 -w -27 -w -32))
 
- (libraries calendar cow str omd ocaml-lua cmarkit hilite.markdown rss containers inotify tiny_httpd ocaml-katex))
+ (libraries calendar str ocaml-lua cmarkit hilite.markdown rss containers inotify tiny_httpd ocaml-katex))

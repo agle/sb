@@ -13,7 +13,6 @@ bug-reports: "https://github.com/agle/sb/issues"
 depends: [
   "dune" {>= "3.19"}
   "ocaml"
-  "cow"
   "calendar"
   "cmarkit"
   "hilite"

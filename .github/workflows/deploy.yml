@@ -1,11 +1,9 @@
 name: build-release
 
 on:
-  pull_request:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    tags:
+      - "v*.*.*"
 
 permissions: read-all
 
@@ -44,30 +42,3 @@ jobs:
         with:
           files: sb
 
-#      - name: Build site
-#        run: |
-#          opam exec --  dune exec -- sb --url "https://agle.github.io"  --title agle -o public
-#
-#      - name: Upload artifact
-#        uses: actions/upload-pages-artifact@v3
-#        with:
-#          path: public
-#
-#  deploy-odoc:
-#    name: Deploy to GitHub Pages
-#    runs-on: ubuntu-latest
-#    if: ${{ github.ref == 'refs/heads/main' }}
-#
-#    needs: build-site
-#
-#    environment:
-#      name: github-pages
-#      url: ${{ steps.deployment.outputs.page_url }}
-#
-#    permissions:
-#      id-token: write
-#      pages: write
-#
-#    steps:
-#      - uses: actions/deploy-pages@v4
-#        id: deployment
