@@ -2,12 +2,12 @@
 opam-version: "2.0"
 synopsis: "A short synopsis"
 description: "A longer description"
-maintainer: ["Maintainer Name <maintainer@example.com>"]
-authors: ["Author Name <author@example.com>"]
+maintainer: ["Alicia Michael <a.michael1@uq.edu.au>"]
+authors: ["Alicia Michael <a.michael1@uq.edu.au>"]
 license: "LICENSE"
-tags: ["add topics" "to describe" "your" "project"]
+tags: ["web" "markdown"]
 homepage: "https://github.com/username/reponame"
-doc: "https://url/to/documentation"
+doc: "https://github.com/agle/sb"
 bug-reports: "https://github.com/username/reponame/issues"
 depends: [
   "dune" {>= "3.19"}
@@ -21,6 +21,9 @@ depends: [
   "inotify"
   "tiny_httpd"
   "ocaml-lua"
+  "ocaml-lsp-server" {with-dev-setup}
+  "ocamlformat" {with-dev-setup}
+  "odig" {with-dev-setup}
   "odoc" {with-doc}
 ]
 build: [
@@ -40,5 +43,6 @@ build: [
 dev-repo: "git+https://github.com/username/reponame.git"
 x-maintenance-intent: ["(latest)"]
 pin-depends: [
-  ["quickjs_eval.dev"  "https://github.com/agle/ocaml_quickjs.git"]
+  ["quickjs_eval.dev"  "git+github.com/agle/ocaml_quickjs.git"]
+  ["ocaml-katex.dev"  "git+github.com/agle/ocaml-katex.git"]
 ]

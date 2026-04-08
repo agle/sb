@@ -7,13 +7,13 @@
 (source
  (github username/reponame))
 
-(authors "Author Name <author@example.com>")
+(authors "Alicia Michael <a.michael1@uq.edu.au>")
 
-(maintainers "Maintainer Name <maintainer@example.com>")
+(maintainers "Alicia Michael <a.michael1@uq.edu.au>")
 
-(license LICENSE)
+(license BSD-2-Clause)
 
-(documentation https://url/to/documentation)
+(documentation https://github.com/agle/sb)
 
 (package
  (name sb)
@@ -30,8 +30,11 @@
    inotify
    tiny_httpd
    ocaml-lua
+
+  (ocaml-lsp-server :with-dev-setup)
+  (ocamlformat :with-dev-setup)
+  (odig :with-dev-setup)
    )
  (tags
-  ("add topics" "to describe" your project)))
+  ("web" "markdown")))
 
-; See the complete stanza docs at https://dune.readthedocs.io/en/stable/reference/dune-project/index.html
