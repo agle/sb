@@ -1,4 +1,4 @@
 pin-depends: [
-  ["quickjs_eval.dev"  "git+github.com/agle/ocaml_quickjs.git"]
-  ["ocaml-katex.dev"  "git+github.com/agle/ocaml-katex.git"]
+  ["quickjs_eval.dev"  "git+https://github.com/agle/ocaml_quickjs.git"]
+  ["ocaml-katex.dev"  "git+https://github.com/agle/ocaml-katex.git"]
 ]

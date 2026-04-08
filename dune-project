@@ -30,6 +30,8 @@
    inotify
    tiny_httpd
    ocaml-lua
+   quickjs_eval
+   ocaml-katex
 
   (ocaml-lsp-server :with-dev-setup)
   (ocamlformat :with-dev-setup)

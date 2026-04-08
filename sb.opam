@@ -4,7 +4,7 @@ synopsis: "A short synopsis"
 description: "A longer description"
 maintainer: ["Alicia Michael <a.michael1@uq.edu.au>"]
 authors: ["Alicia Michael <a.michael1@uq.edu.au>"]
-license: "LICENSE"
+license: "BSD-2-Clause"
 tags: ["web" "markdown"]
 homepage: "https://github.com/username/reponame"
 doc: "https://github.com/agle/sb"
@@ -21,6 +21,8 @@ depends: [
   "inotify"
   "tiny_httpd"
   "ocaml-lua"
+  "quickjs_eval"
+  "ocaml-katex"
   "ocaml-lsp-server" {with-dev-setup}
   "ocamlformat" {with-dev-setup}
   "odig" {with-dev-setup}
@@ -43,6 +45,6 @@ build: [
 dev-repo: "git+https://github.com/username/reponame.git"
 x-maintenance-intent: ["(latest)"]
 pin-depends: [
-  ["quickjs_eval.dev"  "git+github.com/agle/ocaml_quickjs.git"]
-  ["ocaml-katex.dev"  "git+github.com/agle/ocaml-katex.git"]
+  ["quickjs_eval.dev"  "git+https://github.com/agle/ocaml_quickjs.git"]
+  ["ocaml-katex.dev"  "git+https://github.com/agle/ocaml-katex.git"]
 ]

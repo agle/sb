@@ -22,3 +22,9 @@ function dump_table(o)
    end
 end
 
+function make_list(dir, render_item) 
+   p = child_pages(dir)
+   for k,v in pairs(p) do
+      print(render_item(p))
+   end
+end
