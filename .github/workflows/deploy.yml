@@ -1,4 +1,4 @@
-name: docs
+name: build-release
 
 on:
   pull_request:
@@ -38,11 +38,11 @@ jobs:
         run: |
           bash scripts/mkrel.sh
 
-      - uses: actions/upload-artifact@v4
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
         with:
-          name: sg-main
-          path: sg
-
+          files: sb
 
 #      - name: Build site
 #        run: |

@@ -2,10 +2,12 @@
 
 (name sb)
 
+(version 0.0.1)
+
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github agle/sb))
 
 (authors "Alicia Michael <a.michael1@uq.edu.au>")
 
@@ -30,7 +32,6 @@
    inotify
    tiny_httpd
    ocaml-lua
-   quickjs_eval
    ocaml-katex
 
   (ocaml-lsp-server :with-dev-setup)

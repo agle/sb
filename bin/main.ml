@@ -14,7 +14,7 @@ type meta = {
   filename : string;
   name : string;
   date : Date.t option;
-  content : unit -> [ `Text of string | `MDHtml of string | `Xml of Cow.Xml.t ];
+  content : unit -> [ `Text of string | `MDHtml of string | `Xml of string ];
   template : [ `Default | `Fname of string | `Rss ];
   extra_frontmatter : (string * string) list;
 }
@@ -85,10 +85,7 @@ let lua_push_site_meta st cfg =
   lua_push_table st site_data
 
 let body m =
-  m.content () |> function
-  | `Text s -> s
-  | `Xml s -> Cow.Xml.to_string s
-  | `MDHtml s -> s
+  m.content () |> function `Text s -> s | `Xml s -> s | `MDHtml s -> s
 
 let date m =
   Option.map (fun d -> CalendarLib.Printer.Date.sprint "%d %B %Y" d) m.date
@@ -371,7 +368,7 @@ let parse_m cfg fs f =
     match extension fs with
     | "md" -> `MDHtml (do_md content)
     | "markdown" -> `MDHtml (do_md content)
-    | "html" -> `Xml (Cow.Html.of_string content)
+    | "html" -> `Xml content
     | _ -> `Text content
   in
   { m with content }
@@ -490,12 +487,7 @@ let process_dir cfg temps indir outdir =
     if not (Sys.file_exists d) then Sys.mkdir d 0o740;
     templated ms
     |> List.iter (function m, fname, c ->
-        let cont =
-          match c with
-          | `Text t -> t
-          | `Xml x -> Cow.Xml.to_string x
-          | `MDHtml x -> x
-        in
+        let cont = match c with `Text t -> t | `Xml x -> x | `MDHtml x -> x in
         print_endline "output";
         print_endline fname;
         let os = open_out fname in
@@ -590,14 +582,16 @@ let () =
         "prelude file for lua-based templater, default: nil" );
       ( "--preview",
         Arg.String (fun (u : string) -> preview := Some u),
-        "preview site port, default: disabled" );
+        "port, live preview bind to port, default: nil" );
       ( "--title",
         Arg.Set_string site_title,
         "set site name title, default: " ^ !site_title );
     ]
   in
   Arg.parse speclist (fun f -> ()) usage_msg;
-  templates_dir := Unix.realpath !templates_dir;
+
+  if Sys.file_exists !templates_dir then
+    templates_dir := Unix.realpath !templates_dir;
   if not @@ String.is_empty !lua_prelude then
     lua_prelude := Unix.realpath !lua_prelude;
   print_endline !lua_prelude;

@@ -18,4 +18,4 @@ echo "export LD_LIBRARY_PATH=$(realpath lib)" >> binout/start.sh
 echo 'cd "$USER_PWD" && "$FN" $@' >> binout/start.sh
 chmod +x binout/start.sh
 
-bash makeself-2.7.1/makeself.sh binout sg "site generator" ./start.sh
+bash makeself-2.7.1/makeself.sh binout sb "site generator" ./start.sh
