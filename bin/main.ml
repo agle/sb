@@ -129,15 +129,7 @@ let gen_rss cfg (m : meta) (ms : meta list) =
   Rss.print_channel f channel;
   Buffer.to_bytes b |> Bytes.unsafe_to_string
 
-let read_file ic =
-  let res = ref "" in
-  let rec read (c : in_channel) : string =
-    try
-      res := !res ^ input_line c ^ "\n";
-      read c
-    with End_of_file -> !res
-  in
-  read ic
+let read_file ic = CCIO.read_all ic
 
 let lua_register_printer st =
   let open Lua_api in
